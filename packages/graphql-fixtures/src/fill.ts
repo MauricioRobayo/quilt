@@ -149,7 +149,11 @@ export function createFiller(
 
   const context = {schema, resolvers};
 
-  return function fill<Data, Variables, PartialData>(
+  return function fill<
+    Data extends {},
+    Variables extends {},
+    PartialData extends {},
+  >(
     _document: GraphQLOperation<Data, Variables, PartialData>,
     data?: GraphQLFillerData<GraphQLOperation<Data, Variables, PartialData>>,
   ): (request: GraphQLRequest<Data, Variables, PartialData>) => Data {
